@@ -33,4 +33,3 @@ public class TesteBean implements Serializable {
 	}
 
 }
-
