@@ -12,16 +12,16 @@
         <p:panel header="Cadastro de cliente">
             <h:panelGrid columns="2">
                 <p:outputLabel value="Nome" />
-                <p:inputText />
+				<p:inputText value="#{testeBean.novoTeste.nome}" />
 
                 <p:outputLabel value="CPF" />
-                <p:inputMask mask="999.999.999-99" />
+                <p:inputMask mask="999.999.999-99"  />
 
                 <p:outputLabel value="Data de nascimento" />
-                <p:calendar pattern="dd/MM/yyyy" mask="99/99/9999" />
+                <p:calendar pattern="dd/MM/yyyy" mask="99/99/9999"  />
 
                 <p:outputLabel/>
-                <p:commandButton value="Salvar"/>
+                <p:commandButton value="Salvar" action="#{testeBean.salvarRegistro}"/>
             </h:panelGrid>
         </p:panel>
 
