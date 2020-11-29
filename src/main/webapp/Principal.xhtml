@@ -16,7 +16,9 @@
 	<h:form id="principal">
 
 		<p:dataTable value="#{listaTarefaBean.listaTarefas}" var="tarefas"
-			emptyMessage="Nenhuma tarefa cadastrada">
+			emptyMessage="Nenhuma tarefa cadastrada" 
+			
+			rows="5" paginator="true" paginatorPosition="bottom" rowsPerPageTemplate="5,10,15">
 
 			<p:column headerText="Código" width="200" sortBy="#{tarefas.id}">
 				<h:outputText value="#{tarefas.id}" />
