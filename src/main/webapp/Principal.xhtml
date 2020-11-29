@@ -9,21 +9,25 @@
 </h:head>
 <h:body>
 
+	<f:metadata>
+		<f:viewAction action="#{listaTarefaBean.Consultar}"/>
+	</f:metadata>
+
 	<h:form id="principal">
 
 		<p:dataTable value="#{listaTarefaBean.listaTarefas}" var="tarefas"
 			emptyMessage="Nenhuma tarefa cadastrada">
 
-			<p:column headerText="Código" width="200">
+			<p:column headerText="Código" width="200" sortBy="#{tarefas.id}">
 				<h:outputText value="#{tarefas.id}" />
 			</p:column>
 
-			<p:column headerText="Descrição" width="200">
-				<h:outputText value="#{tarefas.descricao}" />
+			<p:column headerText="Descrição" width="200" sortBy="#{tarefas.descricao}">
+				<h:outputText value="#{tarefas.descricao}"/>
 			</p:column>
 
-			<p:column headerText="Status" width="200">
-				<h:outputText value="#{tarefas.statusTarefa}" />
+			<p:column headerText="Observação" width="200">
+				<h:outputText value="#{tarefas.observacao}" />
 			</p:column>
 
 
