@@ -10,7 +10,7 @@
 	<ui:define name="corpo">
 
 		<f:metadata>
-			<f:viewAction action="#{listaTarefaBean.Consultar}" />
+			<f:viewAction action="#{listaTarefaBean.consultar}" />
 		</f:metadata>
 
 		<h:form id="principal">
@@ -56,16 +56,36 @@
 
                 <h:panelGrid columns="2" id="tarefa-painel-dialog">
                     <p:outputLabel value="Código" for="id-tarefa" />
-                    <p:inputText id="id-tarefa" size="4" maxlength="10" value="" />
+                    <p:inputText id="id-tarefa" size="4" maxlength="10" value="#{listaTarefaBean.novaTarefa.id}" />
 
                     <p:outputLabel value="Descrição" for="descricao" />
-                    <p:inputText id="descricao" size="60" maxlength="60" value="" />
+                    <p:inputText id="descricao" size="60" maxlength="60" value="#{listaTarefaBean.novaTarefa.descricao}" />
 
                     <p:outputLabel value="Pessoa" for="usuario" />
                     <p:inputText id="usuario" size="60" maxlength="60" value="" />
 
                     <p:outputLabel value="Local" for="local" />
                     <p:inputText id="local" size="60" maxlength="60" value="" />
+                    
+                    <p:outputLabel value="Data de cadastro" for="dataCadastro" />
+                    <p:inputText id="dataCadastro" size="60" maxlength="60" value="#{listaTarefaBean.novaTarefa.dataCadastro}" />
+                   
+                    <p:outputLabel value="Data de execução" for="dataExecucao" />
+                    <p:inputText id="dataExecucao" size="60" maxlength="60" value="#{listaTarefaBean.novaTarefa.dataExecucao}" />
+                    
+                    <p:outputLabel value="Data de conclusão" for="dataConclusao" />
+                    <p:inputText id="dataConclusao" size="60" maxlength="60" value="#{listaTarefaBean.novaTarefa.dataConclusao}" />
+                    
+                    <p:outputLabel value="Observação" for="observacao" />
+                    <p:inputText id="observacao" size="60" maxlength="60" value="#{listaTarefaBean.novaTarefa.observacao}" />
+                    
+                    <p:outputLabel />
+                    <p:commandButton value="Salvar" id="salvar-button"
+                    				action="#{listaTarefaBean.salvarNovaTarefa}"
+                    				process="tarefa-dialog"
+                    					update="tarefa-table"
+                    					oncomplete="PF('edicaoTarefaDialog').hide()"/>
+                    
                 </h:panelGrid>
             </p:dialog>
 
