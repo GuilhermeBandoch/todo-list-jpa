@@ -116,6 +116,14 @@ public class ListaTarefa implements Serializable {
 		this.statusTarefa = statusTarefa;
 	}
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
