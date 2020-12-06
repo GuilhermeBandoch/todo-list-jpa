@@ -18,34 +18,34 @@ public class ListaTarefaBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-    private ListaTarefaRepository repository;
+	private ListaTarefaRepository repository;
 
-    private List<ListaTarefa> listaTarefas;
-    
-    private ListaTarefa novaTarefa;
+	private List<ListaTarefa> listaTarefas;
 
-    public void consultar() {
-        listaTarefas = repository.listarTudo();
-    }
-    
-    public void criarNovaTarefa() {
-    	novaTarefa = new ListaTarefa();
-    }
-    
-    public void salvarNovaTarefa() {
-    	repository.salvar(novaTarefa);
-    	consultar();
-    }
+	private ListaTarefa novaTarefa = new ListaTarefa();;
 
-    public List<ListaTarefa> getListaTarefas() {
-        return listaTarefas;
-    }
+	public void consultar() {
+		listaTarefas = repository.listarTudo();
+	}
+
+	public void criarNovaTarefa() {
+		novaTarefa = new ListaTarefa();
+	}
+
+	public void salvarNovaTarefa() {
+		repository.salvar(novaTarefa);
+		consultar();
+	}
+
+	public List<ListaTarefa> getListaTarefas() {
+		return listaTarefas;
+	}
 
 	public ListaTarefa getNovaTarefa() {
 		return novaTarefa;
 	}
-	
-	public StatusTarefa[] getStatusTarefas() {
+
+	public StatusTarefa[] getStatusTarefa() {
 		return StatusTarefa.values();
 	}
 }
