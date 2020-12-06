@@ -1,50 +1,69 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <ui:composition template="/WEB-INF/template/layout.xhtml">
 
-    <ui:define name="corpo">
+	<ui:define name="corpo">
 
-        <f:metadata>
-            <f:viewAction action="#{listaTarefaBean.Consultar}"/>
-        </f:metadata>
+		<f:metadata>
+			<f:viewAction action="#{listaTarefaBean.Consultar}" />
+		</f:metadata>
 
-        <h:form id="principal">
-        
-        <p:toolbar>
-		<f:facet name="left">
-    		<p:commandButton value="Usuario" icon="ui-icon-person" onclick="PF('edicaoUsuarioDiaglo').show()"/>
-    		<p:commandButton value="Lugares" icon="ui-icon-arrowreturnthick-1-s"/>
+		<h:form id="principal">
 
-    		<span class="ui-separator">
-        		<span class="ui-icon pi pi-ellipsis-v"/>
-    		</span>
-    		<p:commandButton icon="ui-icon-pencil" title="Editar"/>
-    		<p:commandButton icon="ui-icon-trash" title="Excluir"/>
-		</f:facet>
-		</p:toolbar>
-        
-            <p:dataTable value="#{listaTarefaBean.listaTarefas}" var="tarefas" emptyMessage="Nenhuma tarefa cadastrada"
-                         rows="5" paginator="true" paginatorPosition="bottom">
+			<p:toolbar>
+				<f:facet name="left">
+					<p:commandButton value="Usuario" icon="ui-icon-person"
+						onclick="PF('edicaoUsuarioDialog').show()" />
+					<p:commandButton value="Lugares"
+						icon="ui-icon-arrowreturnthick-1-s" />
 
-                <p:column headerText="Código" width="200" sortBy="#{tarefas.id}">
-                    <h:outputText value="#{tarefas.id}"/>
-                </p:column>
+					<span class="ui-separator"> <span
+						class="ui-icon pi pi-ellipsis-v" />
+					</span>
+					<p:commandButton icon="ui-icon-pencil" title="Editar" />
+					<p:commandButton icon="ui-icon-trash" title="Excluir" />
+				</f:facet>
+			</p:toolbar>
 
-                <p:column headerText="Descrição" width="200" sortBy="#{tarefas.descricao}">
-                    <h:outputText value="#{tarefas.descricao}"/>
-                </p:column>
+			<p:dataTable value="#{listaTarefaBean.listaTarefas}" var="tarefas"
+				emptyMessage="Nenhuma tarefa cadastrada" rows="5" paginator="true"
+				paginatorPosition="bottom">
 
-                <p:column headerText="Status" width="200" sortBy="#{tarefas.statusTarefa}">
-                    <h:outputText />
-                </p:column>
-            </p:dataTable>
-        </h:form>
-    </ui:define>
+				<p:column headerText="Código" width="200" sortBy="#{tarefas.id}">
+					<h:outputText value="#{tarefas.id}" />
+				</p:column>
+
+				<p:column headerText="Descrição" width="200"
+					sortBy="#{tarefas.descricao}">
+					<h:outputText value="#{tarefas.descricao}" />
+				</p:column>
+
+				<p:column headerText="Status" width="200"
+					sortBy="#{tarefas.statusTarefa}">
+					<h:outputText />
+				</p:column>
+			</p:dataTable>
+			
+			<!--modal de usuario  -->
+			
+            <p:dialog header="Novo usuario" widgetVar="edicaoUsuarioDialog" id="usuario-dialog"
+                      resizable="true" modal="true">
+
+                <h:panelGrid columns="2" id="painel-dialog">
+                    <p:outputLabel value="Código" for="id-usuario" />
+                    <p:inputText id="id-usuario" size="4" maxlength="10" value="" />
+
+                    <p:outputLabel value="Nome" for="nome-usuario" />
+                    <p:inputText id="nome-usuario" size="60" maxlength="60" value="" />
+                </h:panelGrid>
+            </p:dialog>
+		</h:form>
+	</ui:define>
 </ui:composition>
 
 </html>
